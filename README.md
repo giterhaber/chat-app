@@ -3,17 +3,19 @@
 - smooth app opening
 - password
 
-## 0.0.1
-- ADDED send button toggle by keypress enter
-- REMOVED inputmessage autocompleteoff
-- REMOVED content border
-- REMOVED max with to blend with the appUi
-- ADDED appUi resizable false
+## 1.1.0
+
+### ADDED
+- send button toggle by keypress enter
+- installer for app
+- icon tooth
+- appUi resizable false
+
+### REMOVED
+- inputmessage autocompleteoff
+- content border
+- max with to blend with the appUi
 - hidemenubar
-
-- installer 
-- icon
-
 
 Special thanks to
 - @https://www.youtube.com/watch?v=X0IhLH9so9U&ab_channel=TraversyMedia
