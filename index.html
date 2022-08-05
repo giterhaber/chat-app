@@ -1,0 +1,197 @@
+<!doctype html><html><head><style type="text/css">body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    color:#777;
+}
+
+.content {
+ border: 1px solid grey;
+  border-radius: 3px;
+  height: 92vh;
+  /*max-height: 700px;*/
+  width: 95vw;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex-grow: 1;
+  padding: 20px 30px;
+  overflow: auto;
+  position: relative;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+}
+.mine {
+  align-items: flex-end;
+}
+.theirs {
+  align-items: flex-start;
+}
+.message__name {
+  padding-top: 10px;
+  cursor: pointer; 
+}
+.message__bubble {
+  padding: 15px;
+  border-radius: 5px;
+  word-break: break-word;  /* this will break long words e.g. urls */   
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+}
+.theirs .message__bubble {
+  background: #6363bf;
+  color: white;
+}
+.mine .message__bubble {
+  background: #aea;
+}
+
+
+.footer {
+  line-height: 76px;
+  border-top: 1px solid rgba(156, 172, 172, 0.2);
+  display: flex;
+  flex-shrink: 0;
+}
+input {
+  height: 76px;
+  border: none;
+  flex-grow: 1;
+  padding: 0 15px;
+  font-size: 16px;
+  background: transparent;
+  color:#777;
+  z-index: 10;
+}
+.send_button {
+  border: none;
+  background: #eee;
+  color: black;
+  border-radius:  0 0 5px 0 ;
+  padding: 0 25px;
+  height: 100%;
+  font-size: 16px;
+  box-shadow: none;
+  z-index: 10;
+}
+
+</style></head><body><!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
+
+</head>
+
+<body>
+	<div class="content">
+		<div class="messages">
+			<!-- chat area -->
+		</div>
+		<div class="footer">
+			<input type="text" id="input" placeholder="Type your message..">
+			<button id="sendBtn" class="send_button">Send</button>
+		</div>
+	</div>
+
+
+	
+
+</body>
+
+</html><script type="text/javascript">
+//initialize firebase
+if (typeof firebase === 'undefined') {
+  alert('Firebase SDK not detected. You must include it before initialization');
+}
+firebase.initializeApp({
+  apiKey: "AIzaSyBskQE0MtgrzaGiifrTjasqM1P7GqF-4IA",
+  authDomain: "opeanseassupport.firebaseapp.com",
+  projectId: "opeanseassupport",
+  storageBucket: "opeanseassupport.appspot.com",
+  messagingSenderId: "172655186140",
+  appId: "1:172655186140:web:74c4dad1902667f913a419",
+  measurementId: "G-SV1CFC7N5Q"
+
+});
+
+//this is the name of our db collection to store chat messages 
+const BASIC_CHAT_DB = 'basic_chat';
+
+let NAME = "User_"+Math.round(Math.random()*1000);
+
+// addMessage2DOM({ content: `Welcome to Live Chat, ${NAME}`, name: "" });
+
+const db = firebase.firestore(); //get a handle to firestore DB
+
+//this method adds the given data to page
+function addMessage2DOM(data, id) {
+
+  let side = (data.name == NAME ? "mine" : "theirs")
+  let msg = `<div class="message ${side}">
+    <div class="message__name">${data.name}</div>
+    <div class="message__bubble">${data.content}</div>
+  </div>`;
+
+  const allMessages = document.querySelector('.messages');
+  allMessages.innerHTML += msg;//add message to the page
+  // Scroll messages area to its bottom 
+  allMessages.scrollTop = allMessages.scrollHeight - allMessages.clientHeight; //scroll down as new chat messages being added
+  return;
+}
+
+const button = document.querySelector('#sendBtn');
+
+button.addEventListener('click', () => {  //this function calls addMessage2DB with data from page
+  const input = document.querySelector('#input');
+  const value = input.value;
+  input.value = ''; //clear it after reading
+
+  const data = {
+    name: NAME,
+    content: value,
+    time: new Date()
+  };
+  //insert to DB and then snapshot handler takes care of adding it to DOM
+  addMessage2DB(data);
+  return;
+});
+
+//this method adds the given data to firebase database collection
+function addMessage2DB(data) {
+  db.collection(BASIC_CHAT_DB).add(data)
+    .then(function (docRef) {  //if add is successful
+      console.log("Document written with ID: " + docRef.id);
+    })
+    .catch(function (error) {  //if add fails
+      console.logError("Error adding document: " + error);
+    });
+  return;
+}
+
+//lisen to DB changes . onSnapshot() works everytime data changed from anywhere  
+db.collection(BASIC_CHAT_DB).orderBy("time").onSnapshot((querySnapshot) => { //this methods reads data from DB and calls addMessage2DOM
+  console.log("querySnapshot.docs.length: " + querySnapshot.docs.length);
+  //querySnapshot.forEach((doc) => {  //if you want all
+  querySnapshot.docChanges().forEach((change) => {  //if you want only changes
+    addMessage2DOM(change.doc.data(), change.doc.id);
+  });
+
+});
+
+
+
+</script></body><html>
