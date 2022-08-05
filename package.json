@@ -1,15 +1,33 @@
 {
-  "name": "chat",
-  "version": "1.0.0",
-  "description": "",
+  "name": "anachats",
+  "version": "1.1.0",
+  "description": "genie",
   "main": "init.js",
   "scripts": {
-    "start": "electron-packager ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
-  "author": "",
+  "build": {
+    "appId": "my-app",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "my-app-uninstaller",
+      "license": "license.md",
+      "allowToChangeInstallationDirectory": false
+    }
+  },
+  "author": "ana",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^20.0.1",
-    "electron-packager": "^15.5.1"
+    "electron-builder": "^23.3.3"
   }
 }
