@@ -1,11 +1,17 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
+
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 463,
     height: 600,
-    icon: "img/icon.png"
+    resizable: false,
+    autoHideMenuBar: true,
+    webPreferences: {
+      devTools: false
+    }
   })
+
 
   win.loadFile('index.html')
 }
@@ -13,3 +19,4 @@ const createWindow = () => {
 app.whenReady().then(() => {
   createWindow()
 })
+
