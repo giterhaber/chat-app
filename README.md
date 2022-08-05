@@ -1,4 +1,7 @@
 # chat-app
+
+this was made for the purpose of no-lag issues when my friend and I are in a working collaboration. The idea came up when social medias such as facebook gives unnecessary distraction, also discord has its sets of distraction for us too. And so chat-app was born. My very first app is themed: undivided communication
+
 ## EXPECTED 
 - smooth app opening
 - password
