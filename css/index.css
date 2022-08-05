@@ -1,1 +1,88 @@
 
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    color:#777;
+}
+
+.content {
+ /* border: 1px solid grey;
+  border-radius: 3px; */
+
+  /*max-height: 700px;*/
+
+  height: 92vh;
+  width: 95vw;
+  /* max-width: 480px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex-grow: 1;
+  padding: 20px 30px;
+  overflow: auto;
+  position: relative;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+}
+.mine {
+  align-items: flex-end;
+}
+.theirs {
+  align-items: flex-start;
+}
+.message__name {
+  padding-top: 10px;
+  cursor: pointer; 
+}
+.message__bubble {
+  padding: 15px;
+  border-radius: 5px;
+  word-break: break-word;  /* this will break long words e.g. urls */   
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+}
+.theirs .message__bubble {
+  background: #6363bf;
+  color: white;
+}
+.mine .message__bubble {
+  background: #aea;
+}
+
+
+.footer {
+  line-height: 76px;
+  border-top: 1px solid rgba(156, 172, 172, 0.2);
+  display: flex;
+  flex-shrink: 0;
+}
+input {
+  height: 76px;
+  border: none;
+  flex-grow: 1;
+  padding: 0 15px;
+  font-size: 16px;
+  background: transparent;
+  color:#777;
+  z-index: 10;
+}
+.send_button {
+  border: none;
+  background: #eee;
+  color: black;
+  border-radius:  0 0 5px 0 ;
+  padding: 0 25px;
+  height: 100%;
+  font-size: 16px;
+  box-shadow: none;
+  z-index: 10;
+}
