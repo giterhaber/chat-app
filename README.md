@@ -22,3 +22,4 @@ Special thanks to
 - @https://www.youtube.com/watch?v=4IoAbY1V2sM&ab_channel=JSimplified
 - @https://www.youtube.com/watch?v=dtk-v5vk8iA&ab_channel=JSimplified
 - @https://www.shareicon.net/kshisen-256x256-71375
+- @https://www.shareicon.net/dental-636987
