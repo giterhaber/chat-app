@@ -2,11 +2,32 @@
 
 this was made for the purpose of no-lag issues when my friend and I are in a working collaboration. The idea came up when social medias such as facebook gives unnecessary distraction, also discord has its sets of distraction for us too. And so chat-app was born. My very first app is themed: undivided communication
 
+> some functions may not be applicable, main purpose is for a desktop app
+
 ## EXPECTED 
 - smooth app opening
-- password
+- commandlines
+  - `/private` opens a new chat window where a password is required
+  - `/edit` opens a new window for admin tools
+- draggable files
+- notifaction
 
-## 1.1.0
+## 2.0.0 [07-08-2022]
+major change
+
+### ADDED
+- sign in modal, email and password
+  - disables chat app if not logged in
+  - error sends to a weird site
+- writing command lines
+  - `/facebook` opens facebook messenger
+
+### REMOVED 
+- send button
+- chat names
+
+## 1.1.0 [06-08-2022] 
+minor changes
 
 ### ADDED
 - send button toggle by keypress enter
