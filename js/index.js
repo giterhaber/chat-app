@@ -13,7 +13,7 @@ firebase.initializeApp({
 });
 
 //this is the name of our db collection to store chat messages
-const BASIC_CHAT_DB = "chat";
+const BASIC_CHAT_DB = "mamshie";
 
 let NAME = "User_" + Math.round(Math.random() * 1000);
 
