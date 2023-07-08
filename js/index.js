@@ -17,10 +17,11 @@ var p = prompt('secret: ');
 if (!p) {
   location.reload()
 } else {
-  const BASIC_CHAT_DB = p;
+  chatvariable(p)
 }
 
-
+function chatvariable(vars) {
+const BASIC_CHAT_DB = vars;
 let NAME = "User_" + Math.round(Math.random() * 1000);
 
 // addMessage2DOM({ content: `Welcome to Live Chat, ${NAME}`, name: "" });
@@ -95,3 +96,5 @@ db.collection(BASIC_CHAT_DB)
       addMessage2DOM(change.doc.data(), change.doc.id);
     });
   });
+
+}
