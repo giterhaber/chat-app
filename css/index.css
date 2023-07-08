@@ -4,38 +4,53 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    padding: 20px 0px 20px 0px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     height: 100vh;
-    color:#777;
+    /* color:#777; */
+    color: black;
+    background-color: #2e2f33;
+    min-height: 100vh;
+
+    
 }
 
+
+::-webkit-scrollbar {display:none;}
 .content {
  /* border: 1px solid grey;
   border-radius: 3px; */
 
   /*max-height: 700px;*/
 
-  height: 92vh;
+  height: 80vh;
   width: 95vw;
   /* max-width: 480px; */
   display: flex;
   flex-direction: column;
+  /* padding: 20px 20px 20px 20px; */
+  padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    background-color: #444654;
 }
 
 .messages {
   flex-grow: 1;
   padding: 20px 30px;
-  overflow: auto;
   position: relative;
+  overflow: auto; 
+  /* Hide scrollbars */
 }
 .message {
   display: flex;
   flex-direction: column;
 }
 .mine {
-  align-items: flex-end;
+  align-items: flex-start;
 }
 .theirs {
   align-items: flex-start;
@@ -48,7 +63,7 @@ body {
   padding: 15px;
   border-radius: 5px;
   word-break: break-word;  /* this will break long words e.g. urls */   
-  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 8px;
 }
 .theirs .message__bubble {
   background: #6363bf;
@@ -72,12 +87,13 @@ input {
   padding: 0 15px;
   font-size: 16px;
   background: transparent;
-  color:#777;
+  /* color:#777; */
+  color: black;
   z-index: 10;
 }
 .send_button {
   border: none;
-  background: #eee;
+  background: #6B6C7B;
   color: black;
   border-radius:  0 0 5px 0 ;
   padding: 0 25px;
