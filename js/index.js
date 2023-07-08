@@ -88,7 +88,7 @@ if (typeof firebase === "undefined") {
               addMessage2DB(data);
         } else {
             data = {
-                name: doc.id,
+                name: status,
                 content: value,
                 time: new Date(),
               };
