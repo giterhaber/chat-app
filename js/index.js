@@ -15,11 +15,15 @@ if (typeof firebase === "undefined") {
   //this is the name of our db collection to store chat messages
   var p = localStorage.getItem('chatroom')
   if (!p) {
-    location.reload()
+    location.href = '../'
   } else {
     chatvariable(p)
   }
   
+
+
+
+
   function chatvariable(vars) {
   const BASIC_CHAT_DB = vars;
   let NAME = "User_" + Math.round(Math.random() * 1000);
@@ -27,6 +31,13 @@ if (typeof firebase === "undefined") {
   // addMessage2DOM({ content: `Welcome to Live Chat, ${NAME}`, name: "" });
   
   const db = firebase.firestore(); //get a handle to firestore DB
+
+  const USERS = db.collection('userS').doc(localStorage.getItem('userSTAT'))
+
+  const admin = 'admin'
+
+
+    
   
   //this method adds the given data to page
   function addMessage2DOM(data, id) {
@@ -44,6 +55,15 @@ if (typeof firebase === "undefined") {
    
     return;
   }
+
+  function out(value) {
+    if ( value == '/logout') {
+        localStorage.clear();
+        setTimeout(() => {
+            location.href = '../'
+        }, 3000);
+    }
+}
   
   const button = document.querySelector("#sendBtn");
   
@@ -52,14 +72,36 @@ if (typeof firebase === "undefined") {
     const input = document.querySelector("#input");
     const value = input.value;
     input.value = ""; //clear it after reading
+
+    let data;
+    
+    USERS.get().then( function (doc) {
+        var status = doc.data().status;
   
-    const data = {
-      name: NAME,
-      content: value,
-      time: new Date(),
-    };
+        if (status == 'admin') {
+            data = {
+                name: admin,
+                content: value,
+                time: new Date(),
+              };
+              out(value)
+              addMessage2DB(data);
+        } else {
+            data = {
+                name: NAME,
+                content: value,
+                time: new Date(),
+              };
+              out(value)
+              addMessage2DB(data);
+        }
+  
+    })
+    
+
     //insert to DB and then snapshot handler takes care of adding it to DOM
-    addMessage2DB(data);
+
+  
     return;
   });
   
@@ -68,6 +110,7 @@ if (typeof firebase === "undefined") {
     if (event.keyCode === 13) {
       event.preventDefault();
       button.click();
+      
     }
   });
   
@@ -159,4 +202,6 @@ if (typeof firebase === "undefined") {
             }
           });
     }
+
+
 
