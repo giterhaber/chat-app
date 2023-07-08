@@ -51,8 +51,12 @@ $('.form__btn').on('click', function () {
 
 function addUSER() {
     
-    ref.doc('kerveysir').set({
-        status: 'admin'
+    // ref.doc('kerveysir').set({
+    //     status: 'admin'
+    // }).then( console.log('in'))
+
+    ref.doc('gogonguser').set({
+        status: 'gong',
     }).then( console.log('in'))
 }
 // addUSER()
