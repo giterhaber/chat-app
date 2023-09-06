@@ -1,11 +1,12 @@
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyBskQE0MtgrzaGiifrTjasqM1P7GqF-4IA",
-    authDomain: "opeanseassupport.firebaseapp.com",
-    projectId: "opeanseassupport",
-    storageBucket: "opeanseassupport.appspot.com",
-    messagingSenderId: "172655186140",
-    appId: "1:172655186140:web:74c4dad1902667f913a419",
-    measurementId: "G-SV1CFC7N5Q",
+    apiKey: "AIzaSyDUXtotsJrj6onAiK_b2O5wZsbZs9eOI_A",
+    authDomain: "zerozeroone-d5ea3.firebaseapp.com",
+    databaseURL: "https://zerozeroone-d5ea3-default-rtdb.firebaseio.com",
+    projectId: "zerozeroone-d5ea3",
+    storageBucket: "zerozeroone-d5ea3.appspot.com",
+    messagingSenderId: "596456248535",
+    appId: "1:596456248535:web:7851334958f27e2131cc92",
+    measurementId: "G-BNBLESZCPP"
   })
 
 const db = firebase.firestore(app);
@@ -51,9 +52,9 @@ $('.form__btn').on('click', function () {
 
 function addUSER() {
     
-    ref.doc('kerveysir').set({
-        status: 'admin'
+    ref.doc('gogong').set({
+        status: 'adS'
     }).then( console.log('in'))
 }
-// addUSER()
+addUSER()
 

@@ -53,18 +53,22 @@ if (typeof firebase === "undefined") {
 
 
 
-
-
-
-    // let side = data.name == 'NAME' ? "mine" : "theirs";
-
     let side;
 
-    if (data.name !== NAME) {
-      side = theirs
+    let locale = localStorage.getItem('userSTAT')
+
+    // let side = data.name == locale ? "mine" : "theirs";
+
+
+    console.log(data.name)
+    console.log(locale)
+
+    if (data.name == 'cyrus') {
+      side = 'mine'
     } else {
-      side = mine
+      side = 'theirs'
     }
+
 
 
     let msg = `<div class="message ${side}">
