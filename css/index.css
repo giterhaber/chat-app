@@ -57,7 +57,11 @@ body {
 }
 .message__name {
   padding-top: 10px;
+  font-size: 70%;
+  color: rgb(23, 196, 196);
+
   cursor: pointer; 
+  transform: translate(5%, 5%); 
 }
 .message__bubble {
   padding: 15px;
@@ -66,9 +70,13 @@ body {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 8px;
 }
 .theirs .message__bubble {
-  background: #6363bf;
-  color: white;
+  background: #265f6c;
+  color: rgb(255, 255, 255);
+
+
+  /* mix-blend-mode: multiply; */
 }
+
 .mine .message__bubble {
   background: #aea;
 }

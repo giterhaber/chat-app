@@ -21,12 +21,20 @@ if (typeof firebase === "undefined") {
   }
   
 
+  //color identifier
+
+
+
+
+
 
 
 
   function chatvariable(vars) {
   const BASIC_CHAT_DB = vars;
-  let NAME = "User_" + Math.round(Math.random() * 1000);
+  // let NAME = "User_" + Math.round(Math.random() * 1000);
+
+  let NAME = localStorage.getItem('userSTAT')
   
   // addMessage2DOM({ content: `Welcome to Live Chat, ${NAME}`, name: "" });
   
@@ -41,10 +49,19 @@ if (typeof firebase === "undefined") {
   
   //this method adds the given data to page
   function addMessage2DOM(data, id) {
-    let side = data.name == NAME ? "mine" : "theirs";
+
+
+
+
+
+
+    let side = data.name == 'NAME' ? "mine" : "theirs";
+
+
+
     let msg = `<div class="message ${side}">
       <div class="message__name">${data.name}</div>
-      <div class="message__bubble">${data.content}</div>
+      <div class="message__bubble" ; title="${data.name}">${data.content}</div>
     </div>`;
   
     const allMessages = document.querySelector(".messages");
@@ -74,6 +91,11 @@ if (typeof firebase === "undefined") {
     input.value = ""; //clear it after reading
 
     let data;
+
+
+    
+
+
     
     USERS.get().then( function (doc) {
         var status = doc.data().status;
